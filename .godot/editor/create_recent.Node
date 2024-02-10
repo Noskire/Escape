@@ -1,0 +1,14 @@
+CollisionShape2D
+Sprite2D
+CharacterBody2D
+TextureRect
+ColorRect
+Control
+Area2D
+Line2D
+CollisionPolygon2D
+StaticBody2D
+PathFollow2D
+Path2D
+NavigationLink2D
+NavigationRegion2D

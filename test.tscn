@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://iyg83k3ldr3v"]
+
+[ext_resource type="Script" path="res://test.gd" id="1_hn2r4"]
+[ext_resource type="Texture2D" uid="uid://4ghmtkuacgm2" path="res://bg_empty.png" id="2_a7p1r"]
+[ext_resource type="Texture2D" uid="uid://cdc0ggmlk2bfi" path="res://icon.svg" id="3_oj8v0"]
+[ext_resource type="Script" path="res://EnemyAi.gd" id="4_lxd5p"]
+
+[node name="Test" type="Node2D"]
+script = ExtResource("1_hn2r4")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_a7p1r")
+
+[node name="EnemyAi" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_oj8v0")
+script = ExtResource("4_lxd5p")

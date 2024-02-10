@@ -1,3 +1,10 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1707518961
+::res://::1707531708
+bg_empty.png::CompressedTexture2D::2048310194804013147::1707531699::1707531711::1::::<><>::
 icon.svg::CompressedTexture2D::4989065627582979214::1707518956::1707518963::1::::<><>::
+qix.tscn::PackedScene::6910320784786075162::1707531445::0::1::::<><>::uid://cdc0ggmlk2bfi::::res://icon.svg<>res://qix.gd<>res://Player.gd<>uid://deik80dxr74a3::::res://line.tscn
+qix.gd::GDScript::-1::1707530220::0::1::::<>Node2D<>::
+Player.gd::GDScript::-1::1707529513::0::1::::<>CharacterBody2D<>::
+line.tscn::PackedScene::7457199867577627712::1707531445::0::1::::<><>::
+test.gd::GDScript::-1::1707531550::0::1::::<>Node2D<>::
+test.tscn::PackedScene::611480535746032345::1707531550::0::1::::<><>::res://test.gd
