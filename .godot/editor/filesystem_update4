@@ -1,7 +1,8 @@
-res://qix.tscn
-res://qix.gd
-res://EnemyAi.gd
-res://Player.gd
-res://line.tscn
 res://test.tscn
+res://PlayerControl.gd
+res://qix.tscn
+res://line.tscn
 res://test.gd
+res://EnemyAi.gd
+res://qix.gd
+res://Player.gd

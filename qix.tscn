@@ -1,77 +1,57 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5pn8du5kpvsk"]
+[gd_scene load_steps=6 format=3 uid="uid://iyg83k3ldr3v"]
 
-[ext_resource type="Texture2D" uid="uid://cdc0ggmlk2bfi" path="res://icon.svg" id="1_0gkfc"]
-[ext_resource type="Script" path="res://qix.gd" id="1_2q358"]
-[ext_resource type="Script" path="res://Player.gd" id="3_rtj20"]
-[ext_resource type="PackedScene" uid="uid://deik80dxr74a3" path="res://line.tscn" id="4_jm535"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dt6fe"]
-size = Vector2(64, 64)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_apwps"]
-size = Vector2(32, 32)
+[ext_resource type="Script" path="res://qix.gd" id="1_hn2r4"]
+[ext_resource type="Texture2D" uid="uid://5oxslsd78pxx" path="res://bg_gauss.png" id="2_qbxqv"]
+[ext_resource type="Texture2D" uid="uid://cdc0ggmlk2bfi" path="res://icon.svg" id="3_oj8v0"]
+[ext_resource type="Script" path="res://EnemyAi.gd" id="4_lxd5p"]
+[ext_resource type="Script" path="res://Player.gd" id="5_ct60k"]
 
 [node name="Qix" type="Node2D"]
-script = ExtResource("1_2q358")
+script = ExtResource("1_hn2r4")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_qbxqv")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_left = -189.0
+offset_top = -44.0
+offset_right = 189.0
+offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "Focus: 100%"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.145098, 0.231373, 0.6, 1)
+[node name="EnemyAi" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_oj8v0")
+script = ExtResource("4_lxd5p")
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(509, 524)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_oj8v0")
+script = ExtResource("5_ct60k")
 
 [node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(0, 0, 100, 0)
+points = PackedVector2Array(0, 0, 1920, 0, 1920, 1080, 0, 1080, 0, 0)
+default_color = Color(0, 0, 0, 1)
 
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(120, 105)
-collision_layer = 2
-script = ExtResource("3_rtj20")
-
-[node name="Sprite" type="Sprite2D" parent="Player"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_0gkfc")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("RectangleShape2D_dt6fe")
-
-[node name="Enemy" type="CharacterBody2D" parent="."]
-collision_layer = 4
-collision_mask = 0
-
-[node name="Sprite" type="Sprite2D" parent="Enemy"]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_0gkfc")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
-shape = SubResource("RectangleShape2D_apwps")
-
-[node name="Limit" type="StaticBody2D" parent="."]
-collision_mask = 0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Limit"]
-polygon = PackedVector2Array(0, 0, 0, 1080, 1920, 1080, 1920, 0, 0, 0, 0, -1, 1921, -1, 1921, 1081, -1, 1081, -1, -1, 0, -1)
-
-[node name="Line" parent="." instance=ExtResource("4_jm535")]
-position = Vector2(0, 760)
-scale = Vector2(19.2, 1)
-
-[node name="Line2" parent="." instance=ExtResource("4_jm535")]
-position = Vector2(585, 760)
-rotation = 1.5708
-scale = Vector2(3.2, 1)
+[node name="LineTemp" type="Line2D" parent="."]
