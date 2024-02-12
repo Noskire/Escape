@@ -3,6 +3,7 @@ extends Node2D
 @onready var text_rect = $Control/TextureRect
 @onready var label = $Control/Label
 @onready var player = $Player
+@onready var pause_menu = $Pause
 
 var array = []
 	# 0 - empty
@@ -19,9 +20,23 @@ var total_area = 2073600.0
 var filled_area = 0.0
 var min_focus = 35
 
+var enemy_path = preload("res://src/enemy_ai.tscn")
+
 func _ready():
+	reset_game()
+
+func set_bg():
+	var value = Global.bg_mode
+	if value == 0:
+		$Control/TextureRect.set_texture(load("res://assets/bg_empty.png"))
+	elif value == 1:
+		$Control/TextureRect.set_texture(load("res://assets/bg_gauss.png"))
+
+func reset_game():
+	set_bg()
 	image = text_rect.get_texture().get_image()
 	
+	array.clear()
 	for x in size.x:
 		array.append([])
 		for y in size.y:
@@ -30,7 +45,18 @@ func _ready():
 				image.set_pixel(x, y, line_color)
 			else:
 				array[x].append(0) # empty
+	
+	filled_area = 0
+	var lines = $Lines.get_children()
+	for l in lines:
+		l.queue_free()
+	
+	remove_enemies()
+	add_enemy(Vector2(0, 0))
+	
 	update_board()
+	
+	get_tree().paused = true
 
 func update_board():
 	#if image.get_pixel(0, 0).is_equal_approx(Color("#FFFFFF")):
@@ -40,6 +66,16 @@ func update_board():
 	label.set_text("Focus: " + str(round(pc)) + "%")
 	if pc < min_focus:
 		game_over()
+
+func add_enemy(pos):
+	var enemy = enemy_path.instantiate()
+	add_child(enemy)
+	enemy.position = pos
+
+func remove_enemies():
+	var enemies = get_tree().get_nodes_in_group("Enemy")
+	for e in enemies:
+		e.queue_free()
 
 ## Get enemy position, finds and returns the number of paths (and which) it can choose
 ## Returns an array with: [num_options, up, right, down, left], the last four will be 1 if an option, -1 otherwise
@@ -281,7 +317,10 @@ func fill_area(loop_points):
 	update_board()
 
 func hit_enemy():
-	$EnemyAi.reset_enemy()
+	var enemies = get_tree().get_nodes_in_group("Enemy")
+	for e in enemies:
+		e.reset_enemy()
+	#$EnemyAi.reset_enemy()
 	erase_path()
 
 func erase_path():
@@ -368,6 +407,25 @@ func can_continue(pos, dir):
 		result[1] = new_dir
 	return result
 
+func _input(event):
+	if event.is_action_pressed("Escape"):
+		get_tree().paused = !get_tree().is_paused()
+
+func new_game():
+	pause_menu.visible = false
+	reset_game()
+	await get_tree().create_timer(0.5).timeout
+	get_tree().paused = false
+
 func game_over():
-	print("Game Over")
 	get_tree().paused = true
+	pause_menu.visible = true
+
+func _on_retry_button_up():
+	reset_game()
+	get_tree().paused = false
+	pause_menu.visible = false
+
+func _on_back_button_up():
+	reset_game()
+	$"../Menu".back_to_menu()

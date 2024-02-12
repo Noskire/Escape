@@ -1,0 +1,395 @@
+[gd_scene load_steps=9 format=3 uid="uid://cloopvx80vxxv"]
+
+[ext_resource type="Texture2D" uid="uid://dfi74otskvaxm" path="res://assets/scene.png" id="1_mlbre"]
+[ext_resource type="PackedScene" uid="uid://iyg83k3ldr3v" path="res://src/qix.tscn" id="2_enaq0"]
+[ext_resource type="Theme" uid="uid://2eeccbpnf2pu" path="res://assets/menu_theme.tres" id="3_cks65"]
+[ext_resource type="Script" path="res://src/menu.gd" id="3_uwi4m"]
+
+[sub_resource type="Animation" id="Animation_pbm5j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Qix:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.667, 0.667)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Qix:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(111, 75)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_n0c0r"]
+resource_name = "back_to_menu"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Qix:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.667, 0.667)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Qix:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(111, 75)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-168, -113), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ywu33"]
+resource_name = "new_game"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Qix:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.667, 0.667), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Qix:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(111, 75), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-168, -113)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_34500"]
+_data = {
+"RESET": SubResource("Animation_pbm5j"),
+"back_to_menu": SubResource("Animation_n0c0r"),
+"new_game": SubResource("Animation_ywu33")
+}
+
+[node name="Scene" type="Node2D"]
+
+[node name="Qix" parent="." instance=ExtResource("2_enaq0")]
+position = Vector2(111, 75)
+scale = Vector2(0.667, 0.667)
+
+[node name="Menu" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_left = 111.0
+offset_top = 75.0
+offset_right = 1391.0
+offset_bottom = 795.0
+theme = ExtResource("3_cks65")
+script = ExtResource("3_uwi4m")
+
+[node name="BG" type="ColorRect" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.784314, 0.784314, 0.901961, 1)
+
+[node name="Initial" type="Control" parent="Menu"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="Label" parent="Menu/Initial"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 414.5
+offset_top = 67.0
+offset_right = 825.5
+offset_bottom = 155.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "Title of Game"
+horizontal_alignment = 1
+
+[node name="VBox" type="VBoxContainer" parent="Menu/Initial"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 489.0
+offset_top = 202.5
+offset_right = 751.0
+offset_bottom = 477.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="New Game" type="Button" parent="Menu/Initial/VBox"]
+layout_mode = 2
+text = "New Game"
+
+[node name="Options" type="Button" parent="Menu/Initial/VBox"]
+layout_mode = 2
+text = "Options"
+
+[node name="Button3" type="Button" parent="Menu/Initial/VBox"]
+layout_mode = 2
+text = "Quit
+"
+
+[node name="Options" type="Control" parent="Menu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Menu/Options"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -122.0
+offset_top = 69.0
+offset_right = 122.0
+offset_bottom = 157.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "Options"
+horizontal_alignment = 1
+
+[node name="Grid" type="GridContainer" parent="Menu/Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -399.0
+offset_top = -167.0
+offset_right = 399.0
+offset_bottom = 279.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 100
+columns = 2
+
+[node name="ScreenMode" type="Label" parent="Menu/Options/Grid"]
+layout_mode = 2
+text = "Screen Mode"
+
+[node name="ScrMode" type="OptionButton" parent="Menu/Options/Grid"]
+layout_mode = 2
+item_count = 2
+selected = 0
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "FullScreen"
+popup/item_1/id = 1
+
+[node name="GameBg" type="Label" parent="Menu/Options/Grid"]
+layout_mode = 2
+text = "Game BG"
+
+[node name="BgModes" type="OptionButton" parent="Menu/Options/Grid"]
+layout_mode = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "Color BR"
+popup/item_0/id = 0
+popup/item_1/text = "Texture BG"
+popup/item_1/id = 1
+
+[node name="ColorBlind" type="Label" parent="Menu/Options/Grid"]
+layout_mode = 2
+text = "Color Blind Mode"
+
+[node name="CBModes" type="OptionButton" parent="Menu/Options/Grid"]
+layout_mode = 2
+
+[node name="Volume" type="Label" parent="Menu/Options/Grid"]
+layout_mode = 2
+text = "Volume"
+
+[node name="VolSlider" type="HSlider" parent="Menu/Options/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+
+[node name="EmptyLabel" type="Label" parent="Menu/Options/Grid"]
+layout_mode = 2
+
+[node name="EmptyLabel2" type="Label" parent="Menu/Options/Grid"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="Menu/Options/Grid"]
+layout_mode = 2
+text = "Back"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_mlbre")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_34500")
+}
+
+[connection signal="button_up" from="Menu/Initial/VBox/New Game" to="Menu" method="_on_new_game_button_up"]
+[connection signal="button_up" from="Menu/Initial/VBox/Options" to="Menu" method="_on_options_button_up"]
+[connection signal="item_selected" from="Menu/Options/Grid/ScrMode" to="Menu" method="_on_scr_mode_item_selected"]
+[connection signal="item_selected" from="Menu/Options/Grid/BgModes" to="Menu" method="_on_bg_modes_item_selected"]
+[connection signal="item_selected" from="Menu/Options/Grid/CBModes" to="Menu" method="_on_cb_modes_item_selected"]
+[connection signal="value_changed" from="Menu/Options/Grid/VolSlider" to="Menu" method="_on_vol_slider_value_changed"]
+[connection signal="button_up" from="Menu/Options/Grid/Back" to="Menu" method="_on_back_button_up"]

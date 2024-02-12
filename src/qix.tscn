@@ -1,0 +1,119 @@
+[gd_scene load_steps=7 format=3 uid="uid://iyg83k3ldr3v"]
+
+[ext_resource type="Script" path="res://src/qix.gd" id="1_hn2r4"]
+[ext_resource type="Texture2D" uid="uid://5oxslsd78pxx" path="res://assets/bg_gauss.png" id="2_qbxqv"]
+[ext_resource type="Texture2D" uid="uid://cdc0ggmlk2bfi" path="res://icon.svg" id="3_oj8v0"]
+[ext_resource type="PackedScene" uid="uid://d3wlo4kpceydv" path="res://src/enemy_ai.tscn" id="5_742vv"]
+[ext_resource type="Script" path="res://src/Player.gd" id="5_ct60k"]
+[ext_resource type="Theme" uid="uid://2eeccbpnf2pu" path="res://assets/menu_theme.tres" id="6_7uprj"]
+
+[node name="Qix" type="Node2D"]
+script = ExtResource("1_hn2r4")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_qbxqv")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -189.0
+offset_top = -44.0
+offset_right = 189.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "Focus: 100%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(509, 524)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_oj8v0")
+script = ExtResource("5_ct60k")
+
+[node name="EnemyAi" parent="." instance=ExtResource("5_742vv")]
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 1920, 0, 1920, 1080, 0, 1080, 0, 0)
+default_color = Color(0, 0, 0, 1)
+
+[node name="LineTemp" type="Line2D" parent="."]
+
+[node name="Lines" type="Node2D" parent="."]
+
+[node name="Pause" type="Control" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 320.0
+offset_top = 180.0
+offset_right = 1600.0
+offset_bottom = 900.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_7uprj")
+
+[node name="BG" type="ColorRect" parent="Pause"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.784314, 0.784314, 0.901961, 1)
+
+[node name="Label" type="Label" parent="Pause"]
+layout_mode = 2
+offset_left = 474.5
+offset_top = 86.0
+offset_right = 805.5
+offset_bottom = 174.0
+theme_override_font_sizes/font_size = 64
+text = "Lost focus!"
+horizontal_alignment = 1
+
+[node name="VBox" type="VBoxContainer" parent="Pause"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.5
+offset_top = -87.5
+offset_right = 161.5
+offset_bottom = 87.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="Retry" type="Button" parent="Pause/VBox"]
+layout_mode = 2
+text = "Try Again"
+
+[node name="Back" type="Button" parent="Pause/VBox"]
+layout_mode = 2
+text = "Back to Menu"
+
+[connection signal="button_up" from="Pause/VBox/Retry" to="." method="_on_retry_button_up"]
+[connection signal="button_up" from="Pause/VBox/Back" to="." method="_on_back_button_up"]

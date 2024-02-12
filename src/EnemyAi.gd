@@ -84,7 +84,7 @@ func _process(delta):
 				new_line.add_point(line.get_point_position(p))
 			line.clear_points()
 			new_line.set_default_color(qix.line_color)
-			qix.add_child(new_line)
+			qix.find_child("Lines").add_child(new_line)
 			fill_area()
 			loop_points.clear()
 		elif func_return[0] == -1: # Invalid path
@@ -115,7 +115,7 @@ func _process(delta):
 				new_line.add_point(line.get_point_position(p))
 			line.clear_points()
 			new_line.set_default_color(qix.line_color)
-			qix.add_child(new_line)
+			qix.find_child("Lines").add_child(new_line)
 			fill_area()
 			loop_points.clear()
 		elif func_return[0] == -1: # Invalid path

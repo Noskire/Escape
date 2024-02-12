@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5oxslsd78pxx"
-path="res://.godot/imported/bg_gauss.png-ff2309ba9eab96cbd05e6e97c848ede8.ctex"
+uid="uid://dfi74otskvaxm"
+path="res://.godot/imported/scene.png-bc143585a34d54c63d2fb3a1cac24fae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bg_gauss.png"
-dest_files=["res://.godot/imported/bg_gauss.png-ff2309ba9eab96cbd05e6e97c848ede8.ctex"]
+source_file="res://assets/scene.png"
+dest_files=["res://.godot/imported/scene.png-bc143585a34d54c63d2fb3a1cac24fae.ctex"]
 
 [params]
 

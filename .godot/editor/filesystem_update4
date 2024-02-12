@@ -1,8 +1,8 @@
-res://test.tscn
-res://PlayerControl.gd
-res://qix.tscn
-res://line.tscn
-res://test.gd
-res://EnemyAi.gd
-res://qix.gd
-res://Player.gd
+res://src/qix.tscn
+res://assets/menu_theme.tres
+res://src/scene.tscn
+res://src/global.tscn
+res://src/enemy_ai.tscn
+res://src/qix.gd
+res://src/EnemyAi.gd
+res://src/menu.gd
