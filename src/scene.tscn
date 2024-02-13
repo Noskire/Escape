@@ -227,7 +227,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.784314, 0.784314, 0.901961, 1)
+color = Color(0.901961, 0.901961, 0.92549, 1)
 
 [node name="Initial" type="Control" parent="Menu"]
 anchors_preset = 0
@@ -244,8 +244,8 @@ offset_top = 67.0
 offset_right = 825.5
 offset_bottom = 155.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 64
-text = "Title of Game"
+theme_override_font_sizes/font_size = 96
+text = "Escapism"
 horizontal_alignment = 1
 
 [node name="VBox" type="VBoxContainer" parent="Menu/Initial"]
@@ -256,9 +256,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 489.0
-offset_top = 202.5
+offset_top = 283.0
 offset_right = 751.0
-offset_bottom = 477.5
+offset_bottom = 558.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 25
@@ -272,6 +272,7 @@ layout_mode = 2
 text = "Options"
 
 [node name="Button3" type="Button" parent="Menu/Initial/VBox"]
+visible = false
 layout_mode = 2
 text = "Quit
 "
@@ -307,9 +308,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -399.0
-offset_top = -167.0
+offset_top = -151.0
 offset_right = 399.0
-offset_bottom = 279.0
+offset_bottom = 295.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 100
@@ -340,13 +341,6 @@ popup/item_0/text = "Color BR"
 popup/item_0/id = 0
 popup/item_1/text = "Texture BG"
 popup/item_1/id = 1
-
-[node name="ColorBlind" type="Label" parent="Menu/Options/Grid"]
-layout_mode = 2
-text = "Color Blind Mode"
-
-[node name="CBModes" type="OptionButton" parent="Menu/Options/Grid"]
-layout_mode = 2
 
 [node name="Volume" type="Label" parent="Menu/Options/Grid"]
 layout_mode = 2
@@ -390,6 +384,5 @@ libraries = {
 [connection signal="button_up" from="Menu/Initial/VBox/Options" to="Menu" method="_on_options_button_up"]
 [connection signal="item_selected" from="Menu/Options/Grid/ScrMode" to="Menu" method="_on_scr_mode_item_selected"]
 [connection signal="item_selected" from="Menu/Options/Grid/BgModes" to="Menu" method="_on_bg_modes_item_selected"]
-[connection signal="item_selected" from="Menu/Options/Grid/CBModes" to="Menu" method="_on_cb_modes_item_selected"]
 [connection signal="value_changed" from="Menu/Options/Grid/VolSlider" to="Menu" method="_on_vol_slider_value_changed"]
 [connection signal="button_up" from="Menu/Options/Grid/Back" to="Menu" method="_on_back_button_up"]

@@ -1,8 +1,13 @@
-res://src/qix.tscn
-res://assets/menu_theme.tres
 res://src/scene.tscn
+res://assets/menu_theme.tres
+res://src/menu.gd
+res://src/global.gd
+res://src/qix.tscn
+res://src/qix.gd
 res://src/global.tscn
 res://src/enemy_ai.tscn
-res://src/qix.gd
 res://src/EnemyAi.gd
-res://src/menu.gd
+res://src/Player.gd
+res://src/Pause.gd
+res://src/splash_screen.tscn
+res://src/splash_screen.gd

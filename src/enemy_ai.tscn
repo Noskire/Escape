@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://d3wlo4kpceydv"]
 
-[ext_resource type="Texture2D" uid="uid://cdc0ggmlk2bfi" path="res://icon.svg" id="1_j6lfi"]
+[ext_resource type="Texture2D" uid="uid://b27vgsoye332g" path="res://assets/enemy.png" id="1_3o36o"]
 [ext_resource type="Script" path="res://src/EnemyAi.gd" id="2_5q5eo"]
 
-[node name="EnemyAi" type="Sprite2D" groups=["Enemy"]]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_j6lfi")
+[node name="EnemyAi" type="Sprite2D"]
+texture = ExtResource("1_3o36o")
+hframes = 3
 script = ExtResource("2_5q5eo")

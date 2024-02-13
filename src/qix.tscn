@@ -1,14 +1,193 @@
-[gd_scene load_steps=7 format=3 uid="uid://iyg83k3ldr3v"]
+[gd_scene load_steps=16 format=3 uid="uid://iyg83k3ldr3v"]
 
 [ext_resource type="Script" path="res://src/qix.gd" id="1_hn2r4"]
 [ext_resource type="Texture2D" uid="uid://5oxslsd78pxx" path="res://assets/bg_gauss.png" id="2_qbxqv"]
-[ext_resource type="Texture2D" uid="uid://cdc0ggmlk2bfi" path="res://icon.svg" id="3_oj8v0"]
-[ext_resource type="PackedScene" uid="uid://d3wlo4kpceydv" path="res://src/enemy_ai.tscn" id="5_742vv"]
+[ext_resource type="Texture2D" uid="uid://chxr5x4k6lmaa" path="res://assets/player.png" id="3_2stkv"]
 [ext_resource type="Script" path="res://src/Player.gd" id="5_ct60k"]
 [ext_resource type="Theme" uid="uid://2eeccbpnf2pu" path="res://assets/menu_theme.tres" id="6_7uprj"]
+[ext_resource type="Script" path="res://src/Pause.gd" id="6_30ltj"]
+
+[sub_resource type="Animation" id="Animation_6udl0"]
+resource_name = "decrease"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Decrease:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Decrease:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(867, 496), Vector2(867, 587)]
+}
+
+[sub_resource type="Animation" id="Animation_dp577"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Decrease:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Decrease:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(867, 496)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v4whe"]
+_data = {
+"RESET": SubResource("Animation_dp577"),
+"decrease": SubResource("Animation_6udl0")
+}
+
+[sub_resource type="Animation" id="Animation_syobr"]
+resource_name = "increase"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Increase:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(839, 32), Vector2(839, -70)]
+}
+
+[sub_resource type="Animation" id="Animation_x35op"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Increase:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(839, -70)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cmajw"]
+_data = {
+"RESET": SubResource("Animation_x35op"),
+"increase": SubResource("Animation_syobr")
+}
+
+[sub_resource type="Animation" id="Animation_6x7ki"]
+resource_name = "Start"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Starting/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": ["Starting in 3...", "Starting in 2...", "Starting in 1..."]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Starting/Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_o7haq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Starting/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Starting in 3..."]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Starting/Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_luio1"]
+_data = {
+"RESET": SubResource("Animation_o7haq"),
+"Start": SubResource("Animation_6x7ki")
+}
 
 [node name="Qix" type="Node2D"]
 script = ExtResource("1_hn2r4")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_qbxqv")
+
+[node name="Lines" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(960, 684)
+texture = ExtResource("3_2stkv")
+script = ExtResource("5_ct60k")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 1920, 0, 1920, 1080, 0, 1080, 0, 0)
+default_color = Color(0, 0, 0, 1)
+
+[node name="LineTemp" type="Line2D" parent="."]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -16,13 +195,7 @@ anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="TextureRect" type="TextureRect" parent="Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("2_qbxqv")
-
-[node name="Label" type="Label" parent="Control"]
+[node name="Focus" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -40,21 +213,70 @@ text = "Focus: 100%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player" type="Sprite2D" parent="."]
-position = Vector2(509, 524)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_oj8v0")
-script = ExtResource("5_ct60k")
+[node name="Decrease" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 867.0
+offset_top = 496.0
+offset_right = 1245.0
+offset_bottom = 584.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.588235, 0.588235, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 64
+text = "-16"
+horizontal_alignment = 2
+vertical_alignment = 1
 
-[node name="EnemyAi" parent="." instance=ExtResource("5_742vv")]
+[node name="FocusAnim" type="AnimationPlayer" parent="Control"]
+root_node = NodePath("../Focus")
+libraries = {
+"": SubResource("AnimationLibrary_v4whe")
+}
 
-[node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(0, 0, 1920, 0, 1920, 1080, 0, 1080, 0, 0)
-default_color = Color(0, 0, 0, 1)
+[node name="Score" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -262.0
+offset_top = 32.0
+offset_right = 262.0
+offset_bottom = 120.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "Entertainment: 0"
+horizontal_alignment = 1
 
-[node name="LineTemp" type="Line2D" parent="."]
+[node name="Increase" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 839.0
+offset_top = -70.0
+offset_right = 1363.0
+offset_bottom = 18.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.588235, 0.784314, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 64
+text = "+58"
+horizontal_alignment = 2
 
-[node name="Lines" type="Node2D" parent="."]
+[node name="ScoreAnim" type="AnimationPlayer" parent="Control"]
+root_node = NodePath("../Score")
+libraries = {
+"": SubResource("AnimationLibrary_cmajw")
+}
 
 [node name="Pause" type="Control" parent="."]
 process_mode = 3
@@ -72,22 +294,42 @@ offset_bottom = 900.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("6_7uprj")
+script = ExtResource("6_30ltj")
 
-[node name="BG" type="ColorRect" parent="Pause"]
+[node name="Border" type="ColorRect" parent="Pause"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.784314, 0.784314, 0.901961, 1)
+color = Color(0, 0, 0, 1)
+
+[node name="BG" type="ColorRect" parent="Pause"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -615.0
+offset_top = -335.0
+offset_right = 615.0
+offset_bottom = 335.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.901961, 0.901961, 0.92549, 1)
 
 [node name="Label" type="Label" parent="Pause"]
-layout_mode = 2
-offset_left = 474.5
-offset_top = 86.0
-offset_right = 805.5
-offset_bottom = 174.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -165.5
+offset_top = 73.0
+offset_right = 165.5
+offset_bottom = 161.0
+grow_horizontal = 2
 theme_override_font_sizes/font_size = 64
 text = "Lost focus!"
 horizontal_alignment = 1
@@ -99,13 +341,26 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -161.5
-offset_top = -87.5
-offset_right = 161.5
-offset_bottom = 87.5
+offset_left = -195.0
+offset_top = -162.0
+offset_right = 195.0
+offset_bottom = 289.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 25
+
+[node name="HighScore" type="Label" parent="Pause/VBox"]
+layout_mode = 2
+text = "New Record!"
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="Pause/VBox"]
+layout_mode = 2
+text = "Entertainment: 0"
+horizontal_alignment = 1
+
+[node name="EmptyLabel" type="Label" parent="Pause/VBox"]
+layout_mode = 2
 
 [node name="Retry" type="Button" parent="Pause/VBox"]
 layout_mode = 2
@@ -115,5 +370,43 @@ text = "Try Again"
 layout_mode = 2
 text = "Back to Menu"
 
+[node name="Starting" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="Starting"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -319.0
+offset_top = -278.0
+offset_right = 319.0
+offset_bottom = -146.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 96
+text = "Starting in 3..."
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Starting"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_luio1")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="button_up" from="Pause/VBox/Retry" to="." method="_on_retry_button_up"]
 [connection signal="button_up" from="Pause/VBox/Back" to="." method="_on_back_button_up"]
+[connection signal="animation_finished" from="Starting/AnimationPlayer" to="Pause" method="_on_animation_finished"]

@@ -2,7 +2,6 @@ extends Control
 
 @onready var scr_mode = $Options/Grid/ScrMode
 @onready var bg_mode = $Options/Grid/BgModes
-@onready var cb_mode = $Options/Grid/CBModes
 @onready var col_slider = $Options/Grid/VolSlider
 
 func _ready():
@@ -14,9 +13,6 @@ func _ready():
 	
 	bg_mode._select_int(Global.bg_mode)
 	$"../Qix".set_bg()
-	
-	cb_mode._select_int(Global.cb_mode)
-	## TODO ##
 	
 	col_slider.value = Global.volume
 	AudioServer.set_bus_volume_db(0, linear_to_db(Global.volume))
@@ -51,12 +47,7 @@ func _on_scr_mode_item_selected(index):
 
 func _on_bg_modes_item_selected(index):
 	Global.set_bg_mode(index)
-	$"../Qix".set_bg(index)
-
-func _on_cb_modes_item_selected(index):
-	Global.set_cb_mode(index)
-	## TODO ##
-	# Place some colors as demonstration at the side of the button
+	$"../Qix".set_bg()
 
 func _on_vol_slider_value_changed(value):
 	Global.set_vol(value)

@@ -7,10 +7,10 @@ var mov_velocity = 600
 var movement
 
 func _process(delta):
-	var hor_stick = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	var ver_stick = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	var dir
+	var hor_stick = Input.get_action_strength("Right") - Input.get_action_strength("Left")
+	var ver_stick = Input.get_action_strength("Down") - Input.get_action_strength("Up")
 	
+	var dir
 	if hor_stick == 0 and ver_stick == 0:
 		dir = Vector2(0, 0)
 	elif abs(hor_stick) >= abs(ver_stick): # Left-Right has priority
@@ -41,23 +41,23 @@ func move(pos, dir):
 		for y in range(1, movement+1):
 			if pos.y-y < 0:
 				break
-			if qix.array[pos.x][pos.y-y] == 2: # Intercepted the enemy
-				qix.hit_enemy()
+			if qix.array[pos.x][pos.y-y] > 3: # Intercepted the enemy
+				qix.hit_enemy(qix.array[pos.x][pos.y-y])
 	elif dir == Vector2(1, 0): # Right
 		for x in range(1, movement+1):
 			if pos.x+x >= size.x:
 				break
-			if qix.array[pos.x+x][pos.y] == 2: # Intercepted the enemy
-				qix.hit_enemy()
+			if qix.array[pos.x+x][pos.y] > 3: # Intercepted the enemy
+				qix.hit_enemy(qix.array[pos.x+x][pos.y])
 	elif dir == Vector2(0, 1): # Down
 		for y in range(1, movement+1):
 			if pos.y+y >= size.y:
 				break
-			if qix.array[pos.x][pos.y+y] == 2: # Intercepted the enemy
-				qix.hit_enemy()
+			if qix.array[pos.x][pos.y+y] > 3: # Intercepted the enemy
+				qix.hit_enemy(qix.array[pos.x][pos.y+y])
 	else: #dir == Vector2(-1, 0): # Left
 		for x in range(1, movement+1):
 			if pos.x-x < 0:
 				break
-			if qix.array[pos.x-x][pos.y] == 2: # Intercepted the enemy
-				qix.hit_enemy()
+			if qix.array[pos.x-x][pos.y] > 3: # Intercepted the enemy
+				qix.hit_enemy(qix.array[pos.x-x][pos.y])
