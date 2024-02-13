@@ -2,7 +2,7 @@ extends Sprite2D
 
 @onready var qix = $".."
 
-var size = Vector2(1920, 1080)
+var size = Vector2(1280, 720)
 var mov_velocity = 600
 var movement
 

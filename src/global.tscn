@@ -10,4 +10,3 @@ script = ExtResource("1_kc72v")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ydkp4")
 autoplay = true
-stream_paused = true

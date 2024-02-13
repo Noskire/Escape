@@ -27,7 +27,7 @@ var array = []
 	# 2 - making line
 	# 3 - fill
 	# 4+ - enemy line id
-var size = Vector2(1920, 1080)
+var size = Vector2(1280, 720)
 
 var image
 var line_color = Color("#000000")
@@ -35,7 +35,7 @@ var path_color = Color("#ffffff")
 var fill_color = Color("#172561") #253b99
 
 var filled_area = 0.0
-var total_area = 2073600.0
+var total_area = size.x * size.y
 var pct # Percentage
 var min_focus = 35
 
@@ -68,7 +68,7 @@ func reset_game():
 	for x in size.x:
 		array.append([])
 		for y in size.y:
-			if x == 0 or x == 1919 or y == 0 or y == 1079:
+			if x == 0 or x == size.x-1 or y == 0 or y == size.y-1:
 				array[x].append(1) # line
 				image.set_pixel(x, y, line_color)
 			else:
